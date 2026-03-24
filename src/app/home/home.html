@@ -1,13 +1,8 @@
 <main>
   <h1>Latest Posts</h1>
 
-  @for (post of blogPosts; track post.title) {
-    
-    <app-blog-card 
-      [title]="post.title" 
-      [summary]="post.summary">
-    </app-blog-card>
-
+  @for (post of blogPosts; track post.title; let i = $index) {
+    <app-blog-card [title]="post.title" [id]="i" [summary]="post.summary"> </app-blog-card>
   } @empty {
     <p>No blog posts found.</p>
   }

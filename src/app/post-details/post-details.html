@@ -1,0 +1,11 @@
+<main>
+  @if (post) {
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.summary }}</p>
+
+    <hr />
+    <button routerLink="/">Back to Home</button>
+  } @else {
+    <p>Post not found</p>
+  }
+</main>

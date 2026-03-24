@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+body {
+  margin: 0;
+  background-color: #f9fafb; 
+  color: #1f2937;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1, h2 {
+  color: #111827;
+}

@@ -1,28 +1,29 @@
 <main>
-  <h2>Create a new post</h2>
+  <h2>Create a New Post</h2>
 
-  <div>
-    <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
-    <textarea
-      type="text"
-      [(ngModel)]="postSummary"
-      placeholder="Post Summary..."
-      rows="4"
-    ></textarea>
-    <button (click)="submitPosts()">Submit Post</button>
+  <div class="form-container">
+    <div class="input-Forum">
+      <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
+
+      <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
+    </div>
+    <div class="forum-btn">
+      <button (click)="clear()">Clear Input</button>
+      <button (click)="submitPosts()">Publish Post</button>
+    </div>
   </div>
 
-  <div>
-    <hr />
+  <hr />
 
-    <h2>Manage Post</h2>
-    <div>
-      @for (post of blogPosts; track post.title; let i = $index) {
-        <p>{{ post.title }}</p>
-        <button (click)="removePost(i)">Delete</button>
-      } @empty {
-        <p>No Post to Manage</p>
-      }
-    </div>
+  <h2>Manage Posts</h2>
+  <div class="manage-list">
+    @for (post of blogPosts; track post.title; let i = $index) {
+      <div class="manage-item">
+        <span>{{ post.title }}</span>
+        <button class="delete-btn" (click)="removePost(i)">Delete</button>
+      </div>
+    } @empty {
+      <p>No posts to manage.</p>
+    }
   </div>
 </main>

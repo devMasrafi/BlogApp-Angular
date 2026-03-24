@@ -24,6 +24,11 @@ export class Dashboard {
     alert('Post Added Succesfully');
   }
 
+  clear(){
+    this.postTitle = ''
+    this.postSummary = ''
+  }
+
 
   // get posts
   blogPosts = this.blogService.getPosts()

@@ -1,0 +1,43 @@
+.form-container {
+  margin: 30px;
+}
+
+.input-Forum {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-Forum input {
+    padding: 5px;
+    
+}
+.input-Forum textarea {
+    padding: 5px;
+    resize: none;
+}
+
+.forum-btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.forum-btn button {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.manage-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.manage-item span {
+  font-weight: 500;
+}

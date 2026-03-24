@@ -1,4 +1,8 @@
-<article>
-    <h2>{{title()}} </h2>
-    <p>{{summary()}} </p>
-</article>
+<div class="card">
+  <article>
+    <a [routerLink]="['/post', id()]">
+      <h2>{{ title() }}</h2>
+    </a>
+    <p>{{ summary() }}</p>
+  </article>
+</div>

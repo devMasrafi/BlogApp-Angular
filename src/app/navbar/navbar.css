@@ -1,3 +1,25 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.navbarLinks {
+  display: flex;
+  gap: 20px;
+}
+
 .navbarLinks a {
-  margin-left: 20px;
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbarLinks a:hover {
+  color: #2563eb; /* Blue highlight on hover */
 }
