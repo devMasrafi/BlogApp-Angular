@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BlogCard } from '../blog-card/blog-card';
+import { BlogService } from '../blog-service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,7 @@ import { BlogCard } from '../blog-card/blog-card';
   styleUrl: './home.css',
 })
 export class Home {
-  blogPosts = [
-    { title: 'My First Day with Angular', summary: 'Learning the CLI and Components.' },
-    { title: 'Understanding Routing', summary: 'Making a Single Page Application.' },
-    { title: 'Why TypeScript is Great', summary: 'Catching bugs before they happen.' }
-  ]
+  private blogService = inject(BlogService);
+
+  blogPosts = this.blogService.getPosts();
 }
