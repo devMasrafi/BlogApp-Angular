@@ -13,4 +13,14 @@ export class BlogService {
   getPosts(){
     return this.posts
   }
+
+  addPost( newTitle: string, newSummary: string ){
+    this.posts.push({
+      title: newTitle,
+      summary: newSummary
+    })
+  }
+  deletePost(index: number){
+    this.posts.splice(index, 1)
+  }
 }
