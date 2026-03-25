@@ -1,50 +1,76 @@
-<main>
-  <h2>Create a New Post</h2>
-  <!-- toast Message -->
-  @if (showSuccessMessage()) {
-    <div class="toast-notification">✅ Post Published Successfully!</div>
-  }
-  <!-- inputForm for post -->
-  <div class="form-container">
-    <!-- post text and inputs -->
-    <div class="input-Forum">
-      <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
+<div class="dashboard-layout">
+  <!-- LEFT SIDE: The Navigation Sidebar -->
+  <aside class="sidebar">
+    <h3>Dashboard</h3>
+    <ul>
+      <li (click)="switchTab('overview')" [class.active]="activeTab === 'overview'">Overview</li>
+      <li (click)="switchTab('create')" [class.active]="activeTab === 'create'">Create Post</li>
+      <li (click)="switchTab('profile')" [class.active]="activeTab === 'profile'">Profile</li>
+    </ul>
+  </aside>
 
-      <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
-    </div>
-    <!-- image input -->
-    <div class="form-group">
-      <div class="image-input">
-        <label>Cover Image</label>
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-      </div>
+  <!-- RIGHT SIDE: The Dynamic Content -->
+  <section class="dashboard-content">
+    <!-- VIEW 1: OVERVIEW -->
+    @if (activeTab === 'overview') {
+      <h2>Manage Posts</h2>
 
-      <div>
-        @if (imageUrl) {
-          <img class="upload-Image" [src]="imageUrl" alt="Preview" />
-        } @else {
-          <div class="placeholder-box">No Image</div>
+      <div class="manage-list">
+        @for (post of blogPosts; track post.title; let i = $index) {
+          <div class="manage-item">
+            <span>{{ post.title }}</span>
+            <button class="delete-btn" (click)="removePost(i)">Delete</button>
+          </div>
+        } @empty {
+          <p>No posts to manage.</p>
         }
       </div>
-    </div>
-    <!-- btn   -->
-    <div class="forum-btn">
-      <button (click)="clear()">Clear Input</button>
-      <button (click)="submitPosts()">Publish Post</button>
-    </div>
-  </div>
-
-  <hr />
-
-  <h2>Manage Posts</h2>
-  <div class="manage-list">
-    @for (post of blogPosts; track post.title; let i = $index) {
-      <div class="manage-item">
-        <span>{{ post.title }}</span>
-        <button class="delete-btn" (click)="removePost(i)">Delete</button>
-      </div>
-    } @empty {
-      <p>No posts to manage.</p>
     }
-  </div>
-</main>
+
+    <!-- VIEW 2: CREATE POST -->
+    @if (activeTab === 'create') {
+      <h2>Create a New Post</h2>
+
+      <!-- toast Message -->
+      @if (showSuccessMessage()) {
+        <div class="toast-notification">Post Published Successfully!</div>
+      }
+
+      <!-- inputForm for post -->
+      <div class="form-container">
+        <div class="input-Forum">
+          <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
+          <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
+        </div>
+
+        <!-- image input -->
+        <div class="form-group">
+          <div class="image-input">
+            <label>Cover Image</label>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" />
+          </div>
+
+          <div>
+            @if (imageUrl) {
+              <img class="upload-Image" [src]="imageUrl" alt="Preview" />
+            } @else {
+              <div class="placeholder-box">No Image</div>
+            }
+          </div>
+        </div>
+
+        <!-- btn   -->
+        <div class="forum-btn">
+          <button (click)="clear()">Clear Input</button>
+          <button (click)="submitPosts()">Publish Post</button>
+        </div>
+      </div>
+    }
+
+    <!-- VIEW 3: PROFILE -->
+    @if (activeTab === 'profile') {
+      <h2>Profile Settings</h2>
+      <p>This is where you can update your avatar and bio later!</p>
+    }
+  </section>
+</div>

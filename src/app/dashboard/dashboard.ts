@@ -17,6 +17,12 @@ export class Dashboard {
 
   showSuccessMessage = signal(false)
 
+  activeTab : string = 'overview'
+
+  switchTab (tabName: string) {
+    this.activeTab= tabName
+  }
+
   submitPosts() {
     this.blogService.addPost(this.postTitle, this.postSummary, this.imageUrl);
     console.log('sent');
