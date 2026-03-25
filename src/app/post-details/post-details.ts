@@ -9,16 +9,19 @@ import { BlogService } from '../blog-service';
   styleUrl: './post-details.css',
 })
 export class PostDetails {
-  private route = inject(ActivatedRoute)
-  private blogService = inject(BlogService)
+  private route = inject(ActivatedRoute);
+  private blogService = inject(BlogService);
 
-  post: any
+  post: any;
+  allPosts: any[] = [];
 
+  constructor() {
+    const idParam = this.route.snapshot.paramMap.get('id');
 
-
-  constructor(){
-    const id = Number(this.route.snapshot.paramMap.get('id'))
-
-    this.post = this.blogService.getPosts()[id]
+    if (idParam !== null) {
+      const id = +idParam;
+      this.post = this.blogService.getPosts()[id];
+    }
+    this.allPosts = this.blogService.getPosts();
   }
 }

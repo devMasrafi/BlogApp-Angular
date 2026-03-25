@@ -1,9 +1,31 @@
-<main>
-  <h1>Latest Posts</h1>
+<main class="page">
+  <!-- FEATURED POST -->
+  @if (blogPosts.length > 0) {
+    <div class="featured" [routerLink]="['/post', 0]">
+      <img [src]="blogPosts[0].image" />
 
-  @for (post of blogPosts; track post.title; let i = $index) {
-    <app-blog-card [title]="post.title" [id]="i" [summary]="post.summary" [image]="post.image" > </app-blog-card>
-  } @empty {
-    <p>No blog posts found.</p>
+      <div class="overlay">
+        <h2>{{ blogPosts[0].title }}</h2>
+        <p>date: 21-4-2025 • location: somewhere</p>
+        <div class="arrow">→</div>
+      </div>
+    </div>
   }
+
+  <!-- TABS -->
+  <div class="tabs">
+    <span>Recent</span>
+    <span>Events</span>
+    <span>Food and Restaurant</span>
+  </div>
+
+  <!-- GRID POSTS -->
+  <div class="grid">
+    @for (post of blogPosts; let i = $index; track i) {
+      @if (i !== 0) {
+        <app-blog-card [title]="post.title" [id]="i" [summary]="post.summary" [image]="post.image">
+        </app-blog-card>
+      }
+    }
+  </div>
 </main>

@@ -13,9 +13,17 @@ export class BlogService {
       this.posts = JSON.parse(savedPosts);
     } else {
       this.posts = [
-        { title: 'My First Day with Angular', summary: 'Learning the CLI and Components.' },
-        { title: 'Understanding Routing', summary: 'Making a Single Page Application.' },
-        { title: 'Why TypeScript is Great', summary: 'Catching bugs before they happen.' },
+        {
+          title: 'My First Day with Angular',
+          summary: 'Learning the CLI and Components.',
+          image: 'https://images.pexels.com/photos/36483262/pexels-photo-36483262.jpeg',
+        },
+        {
+          title: 'Understanding Routing',
+          summary:
+            'Making a Single Page Application. i dont know but will make it with stackoverfllow and ai',
+          image: 'https://images.pexels.com/photos/36583411/pexels-photo-36583411.jpeg',
+        },
       ];
     }
   }
@@ -32,7 +40,7 @@ export class BlogService {
     this.posts.push({
       title: newTitle,
       summary: newSummary,
-      image: newImage
+      image: newImage,
     });
     this.saveData();
   }
@@ -40,5 +48,4 @@ export class BlogService {
     this.posts.splice(index, 1);
     this.saveData();
   }
-
 }
