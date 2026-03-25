@@ -28,10 +28,11 @@ export class BlogService {
     return this.posts;
   }
 
-  addPost(newTitle: string, newSummary: string) {
+  addPost(newTitle: string, newSummary: string, newImage: string) {
     this.posts.push({
       title: newTitle,
       summary: newSummary,
+      image: newImage
     });
     this.saveData();
   }
@@ -39,4 +40,5 @@ export class BlogService {
     this.posts.splice(index, 1);
     this.saveData();
   }
+
 }

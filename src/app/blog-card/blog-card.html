@@ -1,5 +1,10 @@
 <div class="card">
   <article>
+    @if (image()) {
+      <img [src]="image()" alt="Cover Image" class="card-img" />
+    }
+
+
     <a [routerLink]="['/post', id()]">
       <h2>{{ title() }}</h2>
     </a>

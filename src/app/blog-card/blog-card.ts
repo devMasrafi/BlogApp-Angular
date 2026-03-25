@@ -10,7 +10,7 @@ import { RouterLink } from "@angular/router";
 export class BlogCard {
   title = input<string>('')
   summary = input<string>('')
-
-
   id = input<number>(0)
+
+  image = input<string>('')
 }

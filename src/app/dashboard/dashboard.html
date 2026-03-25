@@ -2,11 +2,32 @@
   <h2>Create a New Post</h2>
 
   <div class="form-container">
+    <!-- post text and inputs -->
     <div class="input-Forum">
       <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
 
       <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
     </div>
+    <!-- image input -->
+    <div class="form-group">
+
+      <div class="image-input">
+        <label>Cover Image</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      </div>
+
+      <div>
+        @if (imageUrl) {
+          <img class="upload-Image" [src]="imageUrl" alt="Preview" />
+        }@else {
+          <div class="placeholder-box">
+            No Image
+          </div>
+        }
+      </div>
+
+    </div>
+    <!-- btn   -->
     <div class="forum-btn">
       <button (click)="clear()">Clear Input</button>
       <button (click)="submitPosts()">Publish Post</button>

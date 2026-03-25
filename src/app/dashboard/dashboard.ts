@@ -12,14 +12,15 @@ export class Dashboard {
   private blogService = inject(BlogService);
 
   postTitle: string = '';
-  postSummary: string = '';
+  postSummary: string = ''
 
   submitPosts() {
-    this.blogService.addPost(this.postTitle, this.postSummary);
+    this.blogService.addPost(this.postTitle, this.postSummary, this.imageUrl);
     console.log('sent');
 
     this.postTitle = '';
     this.postSummary = '';
+    this.imageUrl = ''
 
     alert('Post Added Succesfully');
   }
@@ -34,5 +35,23 @@ export class Dashboard {
   blogPosts = this.blogService.getPosts()
   removePost(index: number){
     this.blogService.deletePost(index)
+  }
+
+
+  imageUrl : string = ''
+
+  onFileSelected ( event: any) {
+    const file = event.target.files[0]
+
+    if (file) {
+      const reader = new FileReader()
+
+      reader.onload = (e: any) => {
+        this.imageUrl = e.target.result
+        console.log('image converted succesfully');
+        
+      }
+      reader.readAsDataURL(file)
+    }
   }
 }
