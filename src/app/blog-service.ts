@@ -24,6 +24,30 @@ export class BlogService {
             'Making a Single Page Application. i dont know but will make it with stackoverfllow and ai',
           image: 'https://images.pexels.com/photos/36583411/pexels-photo-36583411.jpeg',
         },
+        {
+          title: 'Understanding Routing',
+          summary:
+            'Making a Single Page Application. i dont know but will make it with stackoverfllow and ai',
+          image: 'https://images.pexels.com/photos/28482524/pexels-photo-28482524.jpeg',
+        },
+        {
+          title: 'Understanding Routing',
+          summary:
+            'Making a Single Page Application. i dont know but will make it with stackoverfllow and ai',
+          image: 'https://images.pexels.com/photos/36583411/pexels-photo-36583411.jpeg',
+        },
+        {
+          title: 'Understanding Routing',
+          summary:
+            'Making a Single Page Application. i dont know but will make it with stackoverfllow and ai',
+          image: 'https://images.pexels.com/photos/12624737/pexels-photo-12624737.jpeg',
+        },
+        {
+          title: 'Understanding Routing',
+          summary:
+            'Making a Single Page Application. i dont know but will make it with stackoverfllow and ai',
+          image: 'https://images.pexels.com/photos/36404634/pexels-photo-36404634.jpeg',
+        },
       ];
     }
   }
