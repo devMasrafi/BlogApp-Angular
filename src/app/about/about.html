@@ -1,1 +1,47 @@
-<p>about works!</p>
+<main class="about">
+  <!-- SECTION 1 -->
+  <section class="top">
+    <div class="text">
+      <h1>Name</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quod quas voluptatem beatae
+        porro nobis. Quidem, ducimus quo ipsam explicabo error aliquid quos modi placeat pariatur
+        iste? Velit amet fugiat eos voluptates, cumque dolores nostrum, autem minima harum facilis
+        recusandae.
+      </p>
+    </div>
+
+    <div class="image">
+      <img src="https://images.pexels.com/photos/3020705/pexels-photo-3020705.jpeg" alt="profile" />
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="middle">
+    <h2>What I do</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vel omnis aliquam porro odit
+      alias tenetur doloribus cum culpa vero?
+    </p>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="contact">
+    @if (showToast()) {
+      <div class="toast">Message sent successfully!</div>
+    }
+    <h2>Contact Me</h2>
+
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="form">
+      <div class="inputFields">
+        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="name" required />
+
+        <input type="email" name="email" placeholder="Your Email" [(ngModel)]="email" required />
+      </div>
+
+      <textarea name="message" placeholder="Your Message" [(ngModel)]="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
