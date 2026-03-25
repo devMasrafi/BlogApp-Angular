@@ -58,3 +58,21 @@ app-blog-card {
   display: block;
   height: 100%;
 }
+
+.tabs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.tabs span {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.tabs-container input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

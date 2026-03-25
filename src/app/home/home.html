@@ -13,15 +13,19 @@
   }
 
   <!-- TABS -->
-  <div class="tabs">
-    <span>Recent</span>
-    <span>Events</span>
-    <span>Food and Restaurant</span>
+  <div class="tabs-container">
+    <div class="tabs">
+      <span>Recent</span>
+      <span>Events</span>
+      <span>Food and Restaurant</span>
+    </div>
+
+    <input type="text" placeholder="Search posts..." [(ngModel)]="searchTerm" />
   </div>
 
   <!-- GRID POSTS -->
   <div class="grid">
-    @for (post of blogPosts; let i = $index; track i) {
+    @for (post of filteredPosts; let i = $index; track i) {
       @if (i !== 0) {
         <app-blog-card [title]="post.title" [id]="i" [summary]="post.summary" [image]="post.image">
         </app-blog-card>
