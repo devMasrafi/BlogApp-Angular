@@ -1,6 +1,10 @@
 <main>
   <h2>Create a New Post</h2>
-
+  <!-- toast Message -->
+  @if (showSuccessMessage()) {
+    <div class="toast-notification">✅ Post Published Successfully!</div>
+  }
+  <!-- inputForm for post -->
   <div class="form-container">
     <!-- post text and inputs -->
     <div class="input-Forum">
@@ -10,7 +14,6 @@
     </div>
     <!-- image input -->
     <div class="form-group">
-
       <div class="image-input">
         <label>Cover Image</label>
         <input type="file" (change)="onFileSelected($event)" accept="image/*" />
@@ -19,13 +22,10 @@
       <div>
         @if (imageUrl) {
           <img class="upload-Image" [src]="imageUrl" alt="Preview" />
-        }@else {
-          <div class="placeholder-box">
-            No Image
-          </div>
+        } @else {
+          <div class="placeholder-box">No Image</div>
         }
       </div>
-
     </div>
     <!-- btn   -->
     <div class="forum-btn">
