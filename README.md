@@ -47,8 +47,8 @@ src/
 <!-- Add screenshots here -->
 ![Dashboard Overview]<img width="1345" height="866" alt="dashboard overview" src="https://github.com/user-attachments/assets/edc44894-893a-49e5-9e0e-fe0e79b30674" />
 
-![Create Post](<img width="1360" height="836" alt="image" src="https://github.com/user-attachments/assets/a0b62917-59be-4bf0-993e-1c5480626022" />
-)
+![Create Post]<img width="1360" height="836" alt="image" src="https://github.com/user-attachments/assets/a0b62917-59be-4bf0-993e-1c5480626022" />
+
 
 ---
 
