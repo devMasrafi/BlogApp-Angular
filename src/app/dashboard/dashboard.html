@@ -1,5 +1,5 @@
 <div class="dashboard-layout">
-  <!-- LEFT SIDE: The Navigation Sidebar -->
+  <!-- Sidebar -->
   <aside class="sidebar">
     <h3>Dashboard</h3>
     <ul>
@@ -9,25 +9,22 @@
     </ul>
   </aside>
 
-  <!-- RIGHT SIDE: The Dynamic Content -->
+  <!-- Content -->
   <section class="dashboard-content">
-    <!-- VIEW 1: OVERVIEW -->
     <div class="stats">
       <div class="card">
         <h3>Total Posts</h3>
         <p>{{ blogPosts.length }}</p>
       </div>
-
       <div class="card">
         <h3>With Images</h3>
-        <p>
-          {{ blogPosts.filter(p => p.image).length }}
-        </p>
+        <p>{{ blogPosts.filter(p => p.image).length }}</p>
       </div>
     </div>
+
+    <!-- OVERVIEW -->
     @if (activeTab === 'overview') {
       <h2>Manage Posts</h2>
-      <!-- @for (post of blogPosts; track post; let i = $index) -->
       <div class="posts">
         @if (blogPosts.length === 0) {
           <p class="empty">No posts yet. Start by adding one!</p>
@@ -35,12 +32,11 @@
           @for (post of blogPosts; track post; let i = $index) {
             <div class="post-card">
               <img [src]="post.image" />
-
               <div class="content">
                 <h4>{{ post.title }}</h4>
                 <p>{{ post.summary }}</p>
               </div>
-
+              <button (click)="openEditModal(i)">Edit</button>
               <button (click)="removePost(i)">Delete</button>
             </div>
           }
@@ -48,35 +44,26 @@
       </div>
     }
 
-    <!-- VIEW 2: CREATE POST -->
+    <!-- CREATE POST -->
     @if (activeTab === 'create') {
       <h2>Create a New Post</h2>
 
-      <!-- toast Message -->
       @if (showSuccessMessage()) {
         <div class="toast-notification">Post Published Successfully!</div>
       }
 
-      <!-- inputForm for post -->
       <div class="form-section">
         <form (ngSubmit)="submitPosts()" #postForm="ngForm" class="form-container">
           <div class="input-Forum">
             <input type="text" name="title" [(ngModel)]="postTitle" required />
-
             <angular-editor [(ngModel)]="postSummary" name="summary"></angular-editor>
           </div>
-          <!-- image input -->
+
           <div class="form-group">
             <div class="image-input">
               <label>Cover Image</label>
-              <input
-                type="file"
-                id="fileInput"
-                (change)="onFileSelected($event)"
-                accept="image/*"
-              />
+              <input type="file" (change)="onFileSelected($event)" accept="image/*" />
             </div>
-
             <div>
               @if (imageUrl) {
                 <img class="upload-Image" [src]="imageUrl" alt="Preview" />
@@ -86,7 +73,6 @@
             </div>
           </div>
 
-          <!-- btn   -->
           <div class="forum-btn">
             <button type="button" (click)="clear()">Clear Input</button>
             <button type="submit" [disabled]="!postForm.valid">Publish Post</button>
@@ -95,10 +81,44 @@
       </div>
     }
 
-    <!-- VIEW 3: PROFILE -->
+    <!-- PROFILE -->
     @if (activeTab === 'profile') {
       <h2>Profile Settings</h2>
       <p>This is where you can update your avatar and bio later!</p>
     }
   </section>
+
+  <!-- EDIT POST MODAL -->
+  @if (isEditModalOpen) {
+    <div class="modal-backdrop">
+      <div class="modal-content">
+        <h2>Edit Post</h2>
+        <form (ngSubmit)="submitEditPost()" #editForm="ngForm" class="form-container">
+          <div class="input-Forum">
+            <input type="text" name="editTitle" [(ngModel)]="postTitle" required placeholder="Post Title" />
+            <angular-editor [(ngModel)]="postSummary" name="editSummary" ></angular-editor>
+          </div>
+
+          <div class="form-group">
+            <div class="image-input">
+              <label>Cover Image</label>
+              <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+            </div>
+            <div>
+              @if (imageUrl) {
+                <img class="upload-Image" [src]="imageUrl" />
+              } @else {
+                <div class="placeholder-box">No Image</div>
+              }
+            </div>
+          </div>
+
+          <div class="forum-btn">
+            <button type="button" (click)="closeEditModal()">Cancel</button>
+            <button type="submit" [disabled]="!editForm.valid">Update Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
 </div>

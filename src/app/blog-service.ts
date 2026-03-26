@@ -72,4 +72,9 @@ export class BlogService {
     this.posts.splice(index, 1);
     this.saveData();
   }
+  updatePost(index: number, title: string, summary: string, image: string) {
+  if (this.posts[index]) {
+    this.posts[index] = { title, summary, image };
+  }
+}
 }
