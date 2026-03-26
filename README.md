@@ -1,59 +1,85 @@
-# DevBlog
+# Angular Blog Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+A simple **Angular 22+ dashboard** for creating, managing, and previewing blog posts with images and rich text editing. Built with **@kolkov/angular-editor** for a WYSIWYG editor.
 
-## Development server
+---
 
-To start a local development server, run:
+## Features
+
+- **Dashboard Layout**: Sidebar navigation with tabs for Overview, Create Post, and Profile.  
+- **Create Posts**: Add a new blog post with title, summary (rich text), and cover image.  
+- **Overview**: View all posts with statistics like total posts and posts with images.  
+- **Post Management**: Delete posts easily from the dashboard.  
+- **Profile Tab**: Placeholder for future profile settings.  
+- **Toast Notifications**: Shows success message after publishing a post.  
+- **Responsive Design**: Clean layout with cards, sidebar, and flexible forms.  
+
+---
+
+## Tech Stack
+
+- **Angular 22+**  
+- **TypeScript**  
+- **@kolkov/angular-editor** (rich text editor)  
+- **Signals** (for reactive toast notifications)  
+- **HTML & CSS** (custom styling)  
+
+---
+
+## Project Structure
+src/
+├─ app/
+│ ├─ dashboard/
+│ │ ├─ dashboard.html
+│ │ ├─ dashboard.css
+│ │ └─ dashboard.ts
+│ └─ blog-service.ts
+├─ assets/
+│ └─ ae-icons/
+│ └─ icons.svg
+└─ main.ts
+
+
+---
+
+## Screenshots
+
+<!-- Add screenshots here -->
+![Dashboard Overview]<img width="1345" height="866" alt="dashboard overview" src="https://github.com/user-attachments/assets/edc44894-893a-49e5-9e0e-fe0e79b30674" />
+
+![Create Post](<img width="1360" height="836" alt="image" src="https://github.com/user-attachments/assets/a0b62917-59be-4bf0-993e-1c5480626022" />
+)
+
+---
+
+## Setup & Installation
+-navigate to project
+```bash
+cd angular-blog-dashboard
+```
+- install dependencies
+```Bash
+npm install
+```
+-Run the Project
+ ```bash
+ ng serve
+ ```
+1. Clone the repository:
 
 ```bash
-ng serve
+git clone https://github.com/yourusername/angular-blog-dashboard.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Notes
+Ensure src/assets/ae-icons/icons.svg exists for editor toolbar icons.
+The project uses Angular standalone components for easier modularity.
+Signals are used for toast notifications.
+this project are localStorage based only for showing the data pass and integration only
 
-## Code scaffolding
+Future Improvements
+Add profile editing and avatar upload.
+Implement pagination for many posts.
+Add user authentication.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
