@@ -1,4 +1,6 @@
 /* src/styles.css */
+@import url('../node_modules/@kolkov/angular-editor/themes/default.scss');
+
 body {
   margin: 0;
   background-color: #f9fafb; 

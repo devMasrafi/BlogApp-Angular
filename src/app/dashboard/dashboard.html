@@ -63,7 +63,7 @@
           <div class="input-Forum">
             <input type="text" name="title" [(ngModel)]="postTitle" required />
 
-            <textarea name="summary" [(ngModel)]="postSummary" required></textarea>
+            <angular-editor [(ngModel)]="postSummary" name="summary"></angular-editor>
           </div>
           <!-- image input -->
           <div class="form-group">

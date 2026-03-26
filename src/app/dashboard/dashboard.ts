@@ -1,10 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BlogService } from '../blog-service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [FormsModule],
+  standalone: true,
+  imports: [FormsModule, AngularEditorModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
