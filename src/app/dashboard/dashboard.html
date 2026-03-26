@@ -12,17 +12,37 @@
   <!-- RIGHT SIDE: The Dynamic Content -->
   <section class="dashboard-content">
     <!-- VIEW 1: OVERVIEW -->
+    <div class="stats">
+      <div class="card">
+        <h3>Total Posts</h3>
+        <p>{{ blogPosts.length }}</p>
+      </div>
+
+      <div class="card">
+        <h3>With Images</h3>
+        <p>
+          {{ blogPosts.filter(p => p.image).length }}
+        </p>
+      </div>
+    </div>
     @if (activeTab === 'overview') {
       <h2>Manage Posts</h2>
 
-      <div class="manage-list">
-        @for (post of blogPosts; track post.title; let i = $index) {
-          <div class="manage-item">
-            <span>{{ post.title }}</span>
-            <button class="delete-btn" (click)="removePost(i)">Delete</button>
+      <div class="posts">
+        @for (post of blogPosts; track post; let i = $index) {
+          @if (blogPosts.length === 0) {
+            <p class="empty">No posts yet. Start by adding one!</p>
+          }
+          <div class="post-card">
+            <img [src]="post.image" />
+
+            <div class="content">
+              <h4>{{ post.title }}</h4>
+              <p>{{ post.summary }}</p>
+            </div>
+
+            <button (click)="removePost(i)">Delete</button>
           </div>
-        } @empty {
-          <p>No posts to manage.</p>
         }
       </div>
     }
@@ -37,32 +57,39 @@
       }
 
       <!-- inputForm for post -->
-      <div class="form-container">
-        <div class="input-Forum">
-          <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
-          <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
-        </div>
-
-        <!-- image input -->
-        <div class="form-group">
-          <div class="image-input">
-            <label>Cover Image</label>
-            <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" />
+      <div class="form-section">
+        <div class="form-container">
+          <div class="input-Forum">
+            <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
+            <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
           </div>
 
-          <div>
-            @if (imageUrl) {
-              <img class="upload-Image" [src]="imageUrl" alt="Preview" />
-            } @else {
-              <div class="placeholder-box">No Image</div>
-            }
-          </div>
-        </div>
+          <!-- image input -->
+          <div class="form-group">
+            <div class="image-input">
+              <label>Cover Image</label>
+              <input
+                type="file"
+                id="fileInput"
+                (change)="onFileSelected($event)"
+                accept="image/*"
+              />
+            </div>
 
-        <!-- btn   -->
-        <div class="forum-btn">
-          <button (click)="clear()">Clear Input</button>
-          <button (click)="submitPosts()">Publish Post</button>
+            <div>
+              @if (imageUrl) {
+                <img class="upload-Image" [src]="imageUrl" alt="Preview" />
+              } @else {
+                <div class="placeholder-box">No Image</div>
+              }
+            </div>
+          </div>
+
+          <!-- btn   -->
+          <div class="forum-btn">
+            <button (click)="clear()">Clear Input</button>
+            <button (click)="submitPosts()">Publish Post</button>
+          </div>
         </div>
       </div>
     }
