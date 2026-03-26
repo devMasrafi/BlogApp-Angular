@@ -1,35 +1,101 @@
 <main class="page">
-  <!-- FEATURED POST -->
-  @if (blogPosts.length > 0) {
-    <div class="featured" [routerLink]="['/post', 0]">
-      <img [src]="blogPosts[0].image" />
+  <div class="hero-header">
+    <h1>Title for something and a background image</h1>
+    <a routerLink="/about">
+      <button class="contact-btn">Contact</button>
+    </a>
+  </div>
 
-      <div class="overlay">
-        <h2>{{ blogPosts[0].title }}</h2>
-        <p>date: 21-4-2025 • location: somewhere</p>
-        <div class="arrow">→</div>
+  <div class="split-section">
+    <!-- LEFT: Auto-changing Carousel -->
+    <div class="carousel-container">
+      @if (blogPosts.length > 0) {
+        <div class="featured" [routerLink]="['/post', currentCarouselIndex]">
+          <img [src]="blogPosts[currentCarouselIndex].image" alt="Featured Post" />
+          <div class="overlay">
+            <h2>{{ blogPosts[currentCarouselIndex].title }}</h2>
+            <p>Read more →</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- RIGHT: Recent Posts List -->
+    <div class="recent-sidebar">
+      <h3>Recent Posts</h3>
+      <div class="recent-list">
+        @for (post of blogPosts | slice: 0 : 4; track post.title; let i = $index) {
+          <a [routerLink]="['/post', i]" class="recent-sidebar-item"> Post: {{ post.title }} </a>
+        }
       </div>
     </div>
-  }
-
-  <!-- TABS -->
-  <div class="tabs-container">
-    <div class="tabs">
-      <span>Recent</span>
-      <span>Events</span>
-      <span>Food and Restaurant</span>
+  </div>
+  <!-- PHASE 2: ABOUT BANNER -->
+  <div class="about-banner">
+    <div class="about-heading-col">
+      <h3>Little About me and this website</h3>
     </div>
 
-    <input type="text" placeholder="Search posts..." [(ngModel)]="searchTerm" />
+    <div class="about-text-col">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, perferendis, molestias
+        maiores nisi accusantium voluptas optio ipsa eveniet eaque voluptatum suscipit pariatur
+        perspiciatis quasi. Aliquam tempore inventore facilis quod voluptas.
+      </p>
+    </div>
   </div>
 
-  <!-- GRID POSTS -->
+  <!-- CATEGORY NAVIGATION TABS -->
+  <div class="category-nav">
+    <div class="nav-links">
+      <span class="active-tab">popular posts</span>
+      <span>Food and Restaurant</span>
+      <span>recent events</span>
+      <span>more ></span>
+    </div>
+  </div>
+
+  <!-- 1. YOUR EXISTING GRID -->
   <div class="grid">
-    @for (post of filteredPosts; let i = $index; track i) {
-      @if (i !== 0) {
-        <app-blog-card [title]="post.title" [id]="i" [summary]="post.summary" [image]="post.image">
-        </app-blog-card>
-      }
+    <!-- Just add | slice:0:6 right here! -->
+    @for (post of filteredPosts | slice: 0 : 4; let i = $index; track i) {
+      <app-blog-card [title]="post.title" [id]="i" [summary]="post.summary" [image]="post.image">
+      </app-blog-card>
     }
   </div>
+
+  <hr class="section-divider" />
+
+  <!-- 3. NEWSLETTER BOX -->
+  <div class="newsletter-box">
+    <p>get news from us on deals and event<br />straight to your mail</p>
+    <div class="subscribe-form">
+      <input type="email" placeholder=" " />
+      <button class="submitEmail">submit email</button>
+    </div>
+  </div>
+
+  <!-- 4. SOCIAL BANNER -->
+  <div class="social-banner">
+    <div class="social-icons">
+      <a href="#"><img src="/facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="/YOutube.svg" alt="YouTube" /></a>
+      <a href="#"><img src="/instagram.svg" alt="Instagram" /></a>
+      <a href="#"><img src="/pinterest.svg" alt="Pinterest" /></a>
+    </div>
+  </div>
 </main>
+
+<footer class="main-footer">
+  <div class="footer-content">
+    <div class="copyright">
+      <p>&copy; 2026 Masrafi's Dev Blog. All rights reserved.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+</footer>
