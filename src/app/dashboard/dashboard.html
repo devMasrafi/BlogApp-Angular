@@ -27,22 +27,23 @@
     </div>
     @if (activeTab === 'overview') {
       <h2>Manage Posts</h2>
-
+      <!-- @for (post of blogPosts; track post; let i = $index) -->
       <div class="posts">
-        @for (post of blogPosts; track post; let i = $index) {
-          @if (blogPosts.length === 0) {
-            <p class="empty">No posts yet. Start by adding one!</p>
-          }
-          <div class="post-card">
-            <img [src]="post.image" />
+        @if (blogPosts.length === 0) {
+          <p class="empty">No posts yet. Start by adding one!</p>
+        } @else {
+          @for (post of blogPosts; track post; let i = $index) {
+            <div class="post-card">
+              <img [src]="post.image" />
 
-            <div class="content">
-              <h4>{{ post.title }}</h4>
-              <p>{{ post.summary }}</p>
+              <div class="content">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.summary }}</p>
+              </div>
+
+              <button (click)="removePost(i)">Delete</button>
             </div>
-
-            <button (click)="removePost(i)">Delete</button>
-          </div>
+          }
         }
       </div>
     }
@@ -58,12 +59,12 @@
 
       <!-- inputForm for post -->
       <div class="form-section">
-        <div class="form-container">
+        <form (ngSubmit)="submitPosts()" #postForm="ngForm" class="form-container">
           <div class="input-Forum">
-            <input type="text" [(ngModel)]="postTitle" placeholder="Post Title..." />
-            <textarea [(ngModel)]="postSummary" placeholder="Post Summary..." rows="4"></textarea>
-          </div>
+            <input type="text" name="title" [(ngModel)]="postTitle" required />
 
+            <textarea name="summary" [(ngModel)]="postSummary" required></textarea>
+          </div>
           <!-- image input -->
           <div class="form-group">
             <div class="image-input">
@@ -87,10 +88,10 @@
 
           <!-- btn   -->
           <div class="forum-btn">
-            <button (click)="clear()">Clear Input</button>
-            <button (click)="submitPosts()">Publish Post</button>
+            <button type="button" (click)="clear()">Clear Input</button>
+            <button type="submit" [disabled]="!postForm.valid">Publish Post</button>
           </div>
-        </div>
+        </form>
       </div>
     }
 

@@ -15,12 +15,12 @@ export class Dashboard {
   postSummary: string = '';
   imageUrl: string = '';
 
-  showSuccessMessage = signal(false)
+  showSuccessMessage = signal(false);
 
-  activeTab : string = 'overview'
+  activeTab: string = 'overview';
 
-  switchTab (tabName: string) {
-    this.activeTab= tabName
+  switchTab(tabName: string) {
+    this.activeTab = tabName;
   }
 
   submitPosts() {
@@ -31,17 +31,17 @@ export class Dashboard {
     this.postSummary = '';
     this.imageUrl = '';
 
-   this.showSuccessMessage.set(true)
+    this.showSuccessMessage.set(true);
 
-   setTimeout(()=>{
-    this.showSuccessMessage.set(false)
-   }, 3000)
-
+    setTimeout(() => {
+      this.showSuccessMessage.set(false);
+    }, 3000);
   }
 
   clear() {
     this.postTitle = '';
     this.postSummary = '';
+    this.imageUrl = '';
   }
 
   // get posts
