@@ -1,0 +1,21 @@
+<main>
+  <div>
+    <div class="postContainer">
+      @for (post of currentPost; track $index) {
+        <div class="postCard">
+          <div class="upperCard"></div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.body }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="pagination">
+      <div>
+        <button (click)="prevPage()" [disabled]="page === 1">Previous</button>
+        <span>Page {{ page }} </span>
+        <button (click)="nextPage()" [disabled]="page * postPerPage >= postArr.length">Next</button>
+      </div>
+    </div>
+  </div>
+</main>

@@ -16,6 +16,8 @@ nav {
 .navbarLinks {
   display: flex;
   gap: 20px;
+
+  text-transform: capitalize;
 }
 
 .navbarLinks a {
@@ -28,5 +30,5 @@ nav {
 }
 
 .navbarLinks a:hover {
-  color: #2563eb; /* Blue highlight on hover */
+  color: #2563eb; 
 }

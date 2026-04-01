@@ -1,0 +1,56 @@
+.postContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 30px;
+}
+
+.postCard {
+  width: 250px;
+  height: 400px;
+
+  padding: 10px 20px;
+  border-radius: 15px 15px 0 0;
+  background-color: #b0cec4;
+  overflow: hidden;
+
+  transition: 0.3s;
+}
+
+.postCard .upperCard {
+  height: 60%;
+}
+
+.postCard:hover {
+  transform: scale(1.1);
+}
+
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0;
+}
+.pagination div {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+.pagination div button {
+  padding: 8px 20px;
+  border: 1px solid gray;
+
+  transition: 0.3s;
+}
+
+.pagination div button:hover {
+    transform: scale(1.3);
+}
+
+.pagination div button:first-child {
+  border-radius: 6px 0 0 6px;
+}
+.pagination div button:last-child {
+    border-radius: 0 6px 6px 0;
+}
