@@ -50,6 +50,11 @@ src/
 ![Create Post]<img width="1360" height="836" alt="image" src="https://github.com/user-attachments/assets/a0b62917-59be-4bf0-993e-1c5480626022" />
 ![Eddit  Post] <img width="1347" height="858" alt="image" src="https://github.com/user-attachments/assets/3db979a9-e809-4556-a934-30f4b5b6e6fa" />
 
+## post Page added
+-post page added with the help of jsonPlaceholer post section which gives 100 post
+--pagination using Angular states
+--apiData fetching using Angular
+-- button are at the bottom for see.
 
 ---
 
