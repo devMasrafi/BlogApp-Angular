@@ -1,23 +1,24 @@
 <main class="container">
+  <!-- LEFT -->
   <div class="left">
     @if (post) {
       <img [src]="post.image" alt="post image" />
       <h1>{{ post.title }}</h1>
       <p>{{ post.summary }}</p>
-
       <hr />
     } @else {
       <p>Post not found</p>
     }
   </div>
 
+  <!-- RIGHT -->
   <div class="right">
     <button routerLink="/">Back to Home</button>
 
     <h2>Recent Posts</h2>
 
-    @for (p of allPosts; track $index) {
-      <div class="post-card" [routerLink]="['/post', $index]">
+    @for (p of recentPosts; track p.originalIndex) {
+      <div class="post-card" [routerLink]="['/post', p.originalIndex]">
         <h4>{{ p.title }}</h4>
         <p>{{ p.summary }}</p>
       </div>

@@ -1,27 +1,35 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BlogService } from '../blog-service';
 
 @Component({
   selector: 'app-post-details',
+  standalone: true,
   imports: [RouterLink],
   templateUrl: './post-details.html',
-  styleUrl: './post-details.css',
+  styleUrls: ['./post-details.css'],
 })
-export class PostDetails {
+export class PostDetails implements OnInit {
   private route = inject(ActivatedRoute);
   private blogService = inject(BlogService);
 
   post: any;
-  allPosts: any[] = [];
+  recentPosts: any[] = [];
 
-  constructor() {
+  ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
 
     if (idParam !== null) {
-      const id = +idParam;
-      this.post = this.blogService.getPosts()[id];
+      const index = +idParam;
+      const all = this.blogService.getPosts();
+
+      this.post = all[index];
+
+      this.recentPosts = all
+        .map((p, i) => ({ ...p, originalIndex: i })) 
+        .reverse()
+        .filter(p => p.originalIndex !== index)
+        .slice(0, 4);
     }
-    this.allPosts = this.blogService.getPosts();
   }
 }
