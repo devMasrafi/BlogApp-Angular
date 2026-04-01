@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { BlogService } from '../blog-service';
+import { BlogService } from '../../services/blog-service';
 
 @Component({
   selector: 'app-dashboard',
