@@ -45,10 +45,11 @@ src/
 ## Screenshots
 
 <!-- Add screenshots here -->
-![Dashboard Overview]<img width="1345" height="866" alt="dashboard overview" src="https://github.com/user-attachments/assets/edc44894-893a-49e5-9e0e-fe0e79b30674" />
+![Dashboard]<img width="1345" height="866" alt="dashboard overview" src="https://github.com/user-attachments/assets/edc44894-893a-49e5-9e0e-fe0e79b30674" />
 
 ![Create Post]<img width="1360" height="836" alt="image" src="https://github.com/user-attachments/assets/a0b62917-59be-4bf0-993e-1c5480626022" />
-![Eddit  Post] <img width="1347" height="858" alt="image" src="https://github.com/user-attachments/assets/3db979a9-e809-4556-a934-30f4b5b6e6fa" />
+![Eddit Post] <img width="1347" height="858" alt="image" src="https://github.com/user-attachments/assets/3db979a9-e809-4556-a934-30f4b5b6e6fa" />
+<img width="1855" height="894" alt="image" src="https://github.com/user-attachments/assets/ad29e7a3-3013-49ea-8c3f-457fb747a825" />
 
 ## post Page added
 -post page added with the help of jsonPlaceholer post section which gives 100 post
